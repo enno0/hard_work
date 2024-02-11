@@ -12,16 +12,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hard_work.enno.ExceptionHan.GlobalExceptionHandler;
 import com.hard_work.enno.Service.CustomerService;
 import com.hard_work.enno.model.Customer;
 
 @Controller
 @RequestMapping("/customers")
-
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    GlobalExceptionHandler customExceptionHandler;
 
     @GetMapping("/customers")
     public String getAllCustomers(Model model) {

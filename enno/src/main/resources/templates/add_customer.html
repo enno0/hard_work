@@ -15,7 +15,7 @@
       <input type="number" th:field="*{age}" required /><br />
       <label>Num:</label>
       <input type="number" th:field="*{num}" required /><br />
-      <div th:replace="/csrf2.html"></div>
+      <div th:replace="~{/csrf2.html}"></div>
       <button type="submit">Add Customer</button>
     </form>
   </body>

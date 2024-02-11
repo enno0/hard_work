@@ -9,7 +9,7 @@
   <body>
     <h1>Access Denied</h1>
     <p>You don't have permission to access this resource.</p>
-    <div th:replace="/csrf2.html"></div>
+    <div th:replace="~{/csrf2.html}"></div>
     <div sec:authorize="!hasRole('')">
       <p>Access denied! Please log in to access this resource.</p>
     </div>

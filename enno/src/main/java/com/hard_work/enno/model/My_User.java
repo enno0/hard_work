@@ -6,21 +6,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.ToString;
 
-// @Getter
-// @Setter
-@ToString
 @Entity
-@Table(name = "customer")
+@Table(name = "user_api")
 @Data
 
-public class Customer {
+public class My_User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String email;
-    private int age;
-    private int num;
+    private String FullName;
+    private String UserName;
+    private String Password;
+
 }
