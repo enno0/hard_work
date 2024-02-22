@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hard_work.enno.DAO.CustomerDao;
-import com.hard_work.enno.model.Customer;
+import com.hard_work.enno.Model.Customer;
 
 @Service
 public class CustomerService {

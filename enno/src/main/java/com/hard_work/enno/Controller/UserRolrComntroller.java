@@ -12,63 +12,62 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hard_work.enno.Model.My_User;
-import com.hard_work.enno.Service.UserService;
+import com.hard_work.enno.Model.UserRole;
+import com.hard_work.enno.Service.UserRoleService;
 
 @Controller
-@RequestMapping("/U")
-public class UserController {
+@RequestMapping("/Role")
+public class UserRolrComntroller {
 
     @Autowired
-    private UserService userService;
+    private UserRoleService userRoleService;
 
     @GetMapping("/Users")
     public String getAllUsers(Model model) {
         // Fetch the list of customers from the service
-        List<My_User> user = userService.getAllUsers();
+        List<UserRole> userRole = userRoleService.getAllUserRoles();
 
         // Add the list of customers to the model
-        model.addAttribute("user", user);
+        model.addAttribute("userRole", userRole);
 
         // Return the Thymeleaf template name (without the file extension)
-        return "user";
+        return "userRole";
     }
 
-    @GetMapping("/users/add")
+    @GetMapping("/Users/add")
     public String showAddForm(Model model) {
-        model.addAttribute("user", new My_User());
-        return "add_user";
+        model.addAttribute("userRole", new UserRole());
+        return "add_userRole";
     }
 
-    @PostMapping("/users/add")
-    public String addUser(@ModelAttribute My_User user) {
+    @PostMapping("/Users/add")
+    public String addUser_Role(@ModelAttribute UserRole userRole) {
         // Add validation and error handling if needed
-        userService.addUser(user);
-        return "redirect:/U/Users";
+        userRoleService.addUserRole(userRole);
+        return "redirect:/Role/Users";
     }
 
     @GetMapping("/Users/update/{id}")
     public String showUpdateForm(@PathVariable int id, Model model) {
         System.out.printf("done", id);
-        My_User user = userService.getUserById(id)
+        UserRole userRole = userRoleService.getUserRoleById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
-        model.addAttribute("user", user);
-        return "update_user";
+        model.addAttribute("userRole", userRole);
+        return "update_userRole";
     }
 
     @PostMapping("/Users/update/{id}")
-    public String updateUser(@PathVariable int id, @ModelAttribute My_User updatedUser) {
-        Optional<My_User> optionalUser = userService.getUserById(id);
+    public String update_The_User(@PathVariable int id, @ModelAttribute UserRole updatedUserRole) {
+        Optional<UserRole> optionalUserRole = userRoleService.getUserRoleById(id);
 
-        if (optionalUser.isPresent()) {
-            My_User existingUser = optionalUser.get();
+        if (optionalUserRole.isPresent()) {
+            UserRole existingUserRole = optionalUserRole.get();
             // Update existingCustomer properties with updatedCustomer properties
-            existingUser.setFullName(updatedUser.getFullName());
-            existingUser.setUserName(updatedUser.getUserName());
-            existingUser.setPassword(updatedUser.getPassword());
+            existingUserRole.setUserName(updatedUserRole.getUserName());
+            existingUserRole.setRole(updatedUserRole.getRole());
             // Save the updated customer
-            userService.updateUser(existingUser);
-            return "redirect:/U/Users";
+            userRoleService.updateUserRole(existingUserRole);
+            return "redirect:/Role/Users";
         } else {
             // Handle the case where the customer with the given ID is not found
             // You might want to show an error page or redirect to a different page
@@ -78,8 +77,8 @@ public class UserController {
 
     @GetMapping("/Users/delete/{id}")
     public String Delete(@PathVariable int id) {
-        userService.deleteUser(id);
-        return "redirect:/U/Users";
+        userRoleService.deleteUserRole(id);
+        return "redirect:/Role/Users";
     }
 
 }

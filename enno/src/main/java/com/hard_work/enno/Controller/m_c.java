@@ -5,15 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hard_work.enno.ExceptionHan.GlobalExceptionHandler;
+import com.hard_work.enno.GlobalExceptionHandler.GlobalExceptionHandler;
+import com.hard_work.enno.Service.CustomUserDetailsService;
 
 @Controller
 public class m_c {
     @Autowired
     GlobalExceptionHandler globalExceptionHandler;
 
-    // @Autowired
-    // CustomUserDetailsService customUserDetailsService;
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
 
     @GetMapping("/")
     public String Home(Model model) {

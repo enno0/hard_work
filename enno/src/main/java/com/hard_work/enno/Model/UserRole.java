@@ -1,22 +1,23 @@
-package com.hard_work.enno.model;
+package com.hard_work.enno.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 @Entity
-@Table(name = "user_api")
-@Data
-
-public class My_User {
+@Table(name = "user_role_api")
+public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String FullName;
+    private int Id;
     private String UserName;
-    private String Password;
-
+    private String Role;
 }
